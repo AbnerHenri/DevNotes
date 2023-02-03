@@ -2,14 +2,11 @@ import styled from "styled-components/native";
 
 export const Page = styled.View`
     flex : 1;
-    justify-content : center;
-    align-items: center;
 
     background: #151515;
 `
 
-export const Title = styled.Text`
-    font-size: 22px;
+export const Text = styled.Text`
     color : #fff;
 `
 
@@ -24,5 +21,9 @@ export const ContainerImage = styled.TouchableOpacity`
 
 export const Image = styled.Image`
     width: 30px;
-    height : 30px
+    height : 30px;
+`
+
+export const NoteList = styled.FlatList`
+    flex : 1
 `

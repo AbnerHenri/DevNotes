@@ -1,10 +1,10 @@
 import React, { useLayoutEffect } from 'react';
-
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
+import NoteItem from '../../Components/NoteItem';
 
-import { Page, Title, ContainerImage, Image } from './ListStyle'
+import { Page, ContainerImage, Image, NoteList, Text } from './ListStyle'
 
 function ListScreen() {
 
@@ -22,9 +22,23 @@ function ListScreen() {
       })
     }, [])
 
+    function handlePress() {
+      console.log('Teste')
+    }
+
   return(
     <Page>
-        <Title>Hello List</Title>
+        <NoteList 
+          data={List}
+          renderItem={({item, index}) => (
+            <NoteItem 
+              data={item}
+              index={index}
+              funcPress={handlePress}
+            />
+          )}
+          keyExtractor={(item, index) => index.toString()}
+        />
         
     </Page>
   );
