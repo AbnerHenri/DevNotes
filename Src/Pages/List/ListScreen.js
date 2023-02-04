@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import NoteItem from '../../Components/NoteItem';
 
-import { Page, ContainerImage, Image, NoteList, Text } from './ListStyle'
+import { Page, ContainerImage, Image, NoteList, Message, ImageMessage, Text } from './ListStyle'
 
 function ListScreen() {
 
@@ -22,24 +22,34 @@ function ListScreen() {
       })
     }, [])
 
-    function handlePress() {
-      console.log('Teste')
+    function handlePress(index) {
+      Navi.navigate('EditNote', { key : index })
     }
 
   return(
     <Page>
-        <NoteList 
-          data={List}
-          renderItem={({item, index}) => (
-            <NoteItem 
-              data={item}
-              index={index}
-              funcPress={handlePress}
-            />
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
-        
+        {List.length == 0  &&
+          <Message>
+            <ImageMessage source={require('../../Assets/task.png')} />
+            <Text>Parece que você ainda não adicionou notas</Text>
+          </Message>
+        }
+
+        {List.length > 0 && 
+          <NoteList
+            data={List}
+            renderItem={({ item, index }) => (
+              <NoteItem
+                data={item}
+                index={index}
+                funcPress={handlePress}
+              />
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        }
+
+      
     </Page>
   );
 }

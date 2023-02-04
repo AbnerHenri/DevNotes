@@ -1,6 +1,7 @@
 const initialState = {
     List : [
-        { title : 'First Note', body : 'Testing...' }
+        { title : 'First Note', body : 'Testing...' },
+        { title: 'Second Note', body: 'Testing...' }
     ]
 }
 
