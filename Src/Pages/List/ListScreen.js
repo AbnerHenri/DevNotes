@@ -1,15 +1,15 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
 
-import NoteItem from '../../Components/NoteItem';
+import { Page, Text, ContainerImage, Image, List } from './ListStyle'
+import { NoteContext } from '../../Contexts/NoteContext';
 
-import { Page, ContainerImage, Image, NoteList, Message, ImageMessage, Text } from './ListStyle'
+import NoteItem from '../../Components/NoteItem/NoteItem';
 
 function ListScreen() {
 
+    const { list } = useContext(NoteContext)
     const Navi = useNavigation()
-    const List = useSelector(state => state.Notes.List)
 
     useLayoutEffect(()=>{
       Navi.setOptions({
@@ -28,28 +28,17 @@ function ListScreen() {
 
   return(
     <Page>
-        {List.length == 0  &&
-          <Message>
-            <ImageMessage source={require('../../Assets/task.png')} />
-            <Text>Parece que você ainda não adicionou notas</Text>
-          </Message>
-        }
-
-        {List.length > 0 && 
-          <NoteList
-            data={List}
-            renderItem={({ item, index }) => (
-              <NoteItem
-                data={item}
-                index={index}
-                funcPress={handlePress}
-              />
-            )}
-            keyExtractor={(item, index) => index.toString()}
+      <List 
+        data={list}
+        renderItem={({index, item})=> (
+          <NoteItem 
+            title={item.title}
+            index={index}
+            navigate={handlePress}
           />
-        }
-
-      
+        )}
+        keyExtractor={(index)=> index.toString()}
+      />
     </Page>
   );
 }

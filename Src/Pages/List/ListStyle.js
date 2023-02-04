@@ -9,7 +9,7 @@ export const Page = styled.View`
 export const Text = styled.Text`
     color : #fff;
     font-size: 18px;
-    text-align: center;
+
     margin : 15px;
 `
 
@@ -27,17 +27,6 @@ export const Image = styled.Image`
     height : 30px;
 `
 
-export const NoteList = styled.FlatList`
-    flex : 1;
+export const List = styled.FlatList`
 `
 
-export const Message = styled.View`
-    flex : 1;
-    justify-content: center;
-    align-items: center;
-`
-
-export const ImageMessage = styled.Image`
-    width: 150px;
-    height : 150px;
-`
