@@ -26,11 +26,9 @@ function ListScreen() {
       Navi.navigate('EditNote', { key : index })
     }
 
-    console.log(list.length)
-
   return(
     <Page>
-      {list.length == 1 && 
+      {list.length >= 1 && 
         <List
           data={list}
           renderItem={({ index, item }) => (
@@ -40,7 +38,7 @@ function ListScreen() {
               navigate={handlePress}
             />
           )}
-          keyExtractor={(index) => index.toString()}
+          keyExtractor={(item, index) => index}
         />
       }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item, TextItem } from './Style';
+import { Item, TextItem, Delete } from './Style';
 
 
 function NoteItem({ title, index, navigate }) {
