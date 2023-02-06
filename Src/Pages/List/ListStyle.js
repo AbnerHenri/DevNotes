@@ -30,3 +30,14 @@ export const Image = styled.Image`
 export const List = styled.FlatList`
 `
 
+export const Message = styled.View`
+    justify-content: center;
+    align-items: center;
+
+    transform : translateY(180px)
+`
+
+export const MessageImage = styled.Image`
+    width: 130px;
+    height : 130px;
+`

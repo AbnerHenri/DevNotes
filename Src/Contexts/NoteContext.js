@@ -5,7 +5,7 @@ export const NoteContext = createContext({})
 function NoteProvider({ children }) {
 
     const [list, setList] = useState([
-        { title : 'First Note', body : 'Testing...' },
+        // { title : 'First Note', body : 'Testing...' },
     ])
 
     return(

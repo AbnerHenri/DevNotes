@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { Page, Text, ContainerImage, Image, List } from './ListStyle'
+import { Page, Text, ContainerImage, Image, List, Message, MessageImage } from './ListStyle'
 import { NoteContext } from '../../Contexts/NoteContext';
 
 import NoteItem from '../../Components/NoteItem/NoteItem';
@@ -26,19 +26,30 @@ function ListScreen() {
       Navi.navigate('EditNote', { key : index })
     }
 
+    console.log(list.length)
+
   return(
     <Page>
-      <List 
-        data={list}
-        renderItem={({index, item})=> (
-          <NoteItem 
-            title={item.title}
-            index={index}
-            navigate={handlePress}
-          />
-        )}
-        keyExtractor={(index)=> index.toString()}
-      />
+      {list.length == 1 && 
+        <List
+          data={list}
+          renderItem={({ index, item }) => (
+            <NoteItem
+              title={item.title}
+              index={index}
+              navigate={handlePress}
+            />
+          )}
+          keyExtractor={(index) => index.toString()}
+        />
+      }
+
+      {list.length == 0 && 
+        <Message>
+          <MessageImage source={require('../../Assets/task.png')} />
+          <Text style={{ color : '#FFF'}} >Você não possui nenhuma nota</Text>
+        </Message>
+      }
     </Page>
   );
 }
